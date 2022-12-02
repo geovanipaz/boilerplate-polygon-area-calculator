@@ -27,7 +27,7 @@ class Rectangle:
         amount = int(self.get_area() / obg.get_area())
         
         if amount < 1:
-            return
+            return 0
         elif amount == 1:
             return amount
         elif amount > 1:
@@ -36,14 +36,27 @@ class Rectangle:
         
 
 class Square(Rectangle):
-    pass
+    def __init__(self, lado):
+        self.width = lado
+        self.height = lado
+    
+    def set_side(self, lado):
+        self.width = lado
+        self.height = lado
+    def __str__(self):
+        return f'{self.__class__.__name__}(side={self.width})'
+    
+    
 
 r1 = Rectangle(10, 10)
-r2 = Rectangle(100, 10)
+r2 = Square(5)
 print(r1)
+print(r2)
 print(r1.get_area())
 print(r1.get_perimeter())
 print(r1.get_picture())  
+r2.set_side(2)
+print(r2.get_picture())
 print(r1.get_amount_inside(r2))  
 
 
